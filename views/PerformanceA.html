@@ -1,0 +1,90 @@
+﻿
+
+<div>
+    <h2 class="alert alert-success">Performance A - Dynamic Data Load</h2>
+</div>
+
+<div id="dynaContent">
+    <dynamic-report></dynamic-report>
+</div>
+
+
+<!-- Pagination Example -->
+<div class="text-center">
+    <nav>
+        <ul class="pagination">
+            <li id="prev" class="disabled">
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li id="first" class="active"><a href="#">1</a></li>
+            <li class=""><a href="#">2</a></li>
+            <li class=""><a href="#">3</a></li>
+            <li id="last" class=""><a href="#">4</a></li>
+            <li id="next">
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+<!-- Pagination Script Example -->
+<script>
+    $(function () {
+
+        function getClickedPaginationElement(target) {
+
+            if (target.nodeName === "LI") {
+                return target;  
+            }
+            else {
+                return getClickedPaginationElement(target.parentNode);
+            }
+        }
+
+        // Event delegation for pagination
+        $(".pagination").on("click", function (e) {
+
+            var clicked = $(getClickedPaginationElement(e.target)), // wrapped as jQuery object
+                active = $(".pagination .active");
+
+            if (clicked.hasClass("active"))
+                return;
+
+            if (clicked[0].id === "prev") {
+                if (active[0].id === "first")
+                    return;
+                clicked = active.prev();
+            }
+
+            if (clicked[0].id === "next") {
+                if (active[0].id === "last")
+                    return;
+                clicked = active.next();
+            }
+
+            // Change to clicked paged
+            $(".pagination").find(".active").removeClass("active");
+            clicked.addClass("active");
+
+            // Disable arrows logic
+            if (clicked[0].id === "last")
+                $("#next").addClass("disabled");
+            else
+                $("#next").removeClass("disabled");
+
+            if (clicked[0].id === "first")
+                $("#prev").addClass("disabled");
+            else
+                $("#prev").removeClass("disabled");
+
+            console.log("You Clicked " + clicked.children()[0].innerText);
+
+        });
+    });
+    
+</script>

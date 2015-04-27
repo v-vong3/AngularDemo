@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{appTitle}}</title>
+    <base href="/" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/app.css">
+    <script src="/scripts/jQuery/jquery-1.11.1.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script src="/scripts/angular-1.3.9/angular.js"></script>
+    <script src="/scripts/angular-1.3.9/angular-ui-router.js"></script>
+    <!-- Remove below script in Production -->
+    <script src="/scripts/prettyprint.js"></script>
+</head>
+<body>
+
+
+    <!-- Navigation -->
+    <header class="navbar navbar-inverse " role="banner">
+
+        <div class="container-fluid">
+            <!-- Application Title -->
+            <div class="navbar-brand">{{appTitle}}</div> 
+
+            <!-- Navigation Button -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Navigation Menu Items -->
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="./">Dashboard</a></li>
+                    <li><a href="./asdfasd">404 Error</a></li>
+                    <li class="dropdown">
+                        <!-- Drop down menu example -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="reportMenu">
+                            <li role="presentation"><a href="./reports/reportA">Report A</a></li>
+                            <li role="presentation"><a href="./reports/reportB">Report B</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <!-- Drop down menu example -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Performance <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="performanceMenu">
+                            <li role="presentation"><a href="./performance/performanceA">Performance A</a></li>
+                            <li role="presentation"><a href="./performance/performanceB">Performance B</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- Breadcrumbs placeholder -->
+    <div class="container-fluid breadcrumb " >
+        <span>{{breadcrumbs}}</span>
+    </div>
+
+    <!-- Application Content -->
+    <div id="viewBody" class="container-fluid" ui-view>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center center-block">
+        <div app-footer></div>
+    </footer>
+
+
+
+    <!-- Angular Custom JavaScript -->
+    <script src="scripts/app/filters.js"></script>
+    <script src="scripts/app/services.js"></script>
+    <script src="scripts/app/directives.js"></script>
+    <script src="scripts/app/controllers.js"></script>
+    <script src="scripts/app/app.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#navbar").find("li").on('click', function () {
+
+                if (!$(this).hasClass("dropdown")) {
+                    $(this).parent().find(".active").removeClass("active");
+                    $(this).addClass("active");
+                }
+
+            });
+
+            $(".dropdown-menu").find("li").on('click', function () {
+                $("#navbar").find(".active").removeClass("active");
+                $(this).parent().parent().addClass("active");
+                $(this).addClass("active");
+            });
+
+            
+
+        });
+
+    </script>
+
+</body>
+</html>

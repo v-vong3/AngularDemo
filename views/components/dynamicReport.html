@@ -1,0 +1,31 @@
+﻿
+
+<div class="col-lg-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Dynamic Data Load</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped" >
+                <thead>
+                    <tr class="danger">
+                        <th>Geography</th>
+                        <th>Favorite Flavor</th>
+                        <th>Market Share (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="d in reportData" >
+                        <td width="15%">{{d.Geography}}</td>
+                        <td>{{d.Label}}</td>
+                        <td>{{d.Value}}</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+
+    </div>
+
+</div>
+

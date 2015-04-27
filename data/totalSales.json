@@ -1,0 +1,8 @@
+{
+    "Data": [
+        { "Geography": "USA", "Label": "Vanilla",   "Value": 7000 },
+        { "Geography": "USA", "Label": "Chocolate", "Value": 2000 },
+        { "Geography": "USA", "Label": "Other",     "Value": 1000 }
+    ]
+}
+

@@ -1,0 +1,59 @@
+﻿
+
+<div>
+    <h2 class="alert alert-info">Report A</h2>
+</div>
+
+
+
+
+<div >
+
+    <div id="group" class="list-group table-hover">
+        <a href="#" class="list-group-item" ng-click="getData('marketShare')">
+            <span class="glyphicon glyphicon-file"></span> Market Share <span class="badge">25 KB</span>
+        </a>
+        <a href="#" class="list-group-item" ng-click="getData('totalSales')">
+            <span class="glyphicon glyphicon-file"></span> Total Sales <span class="badge">145 KB</span>
+        </a>
+        <a href="#" class="list-group-item" ng-click="getData('totalSalesPrev')">
+            <span class="glyphicon glyphicon-file"></span> Previous Year Sales <span class="badge">50 KB</span>
+        </a>
+        <a id="vid" href="#" class="list-group-item" ng-click="getData('video')">
+            <span class="glyphicon glyphicon-film"></span> Video Report <span class="badge">8 MB</span>
+        </a>
+    </div>
+
+    <div id="dataDump">
+        <h4 class="alert alert-success">Report Data</h4>
+
+
+        <div ng-repeat="d in reportData" ng-class-odd="'list-group-item-warning'">
+            <div ng-if="d.Message">
+                
+                <h4 class="list-group-item list-group-item-danger">{{d.Message}}</h4>
+            </div>
+            <div ng-if="d.Geography">
+                <h4 class="list-group-item">{{d.Geography}} - {{d.Label}} at {{d.Value}}</h4>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+    $(function () {
+        $("#group").children().on("click", function () {
+            $(this).parent().find(".active").removeClass("active");
+            $(this).addClass("active");
+
+        });
+    });
+    
+
+
+</script>
